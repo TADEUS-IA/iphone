@@ -7,7 +7,7 @@
   <meta name="description" content="Landing page premium estilo Apple para MacBook Pro — animações suaves, visual minimalista e checkout Mercado Pago embutido em tela cheia com fallback automático." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0b0c;
@@ -17,109 +17,290 @@
       --gold: #d4af37;
       --gold-2: #f5d06a;
       --accent: var(--gold);
-      --radius: 18px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --maxw: 1200px;
-      --vh: 1vh; /* atualizado via JS para corrigir 100vh no iOS */
+      --radius: 20px; /* Raio aumentado para cantos mais suaves */
+      --shadow: 0 16px 40px rgba(0,0,0,.3); /* Sombra mais sutil */
+      --maxw: 1100px; /* Largura máxima ajustada */
+      --vh: 1vh;
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body { margin: 0; background: var(--bg); color: var(--fg); font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
     /* ===== NAV ===== */
-    .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(16px); background: linear-gradient(to bottom, rgba(11,11,12,.8), rgba(11,11,12,.35)); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .nav-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 12px 20px; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .3px; }
-    .brand-icon { width: 22px; height: 22px; border-radius: 6px; background: radial-gradient(120% 120% at 0% 0%, var(--gold-2), var(--gold) 42%, #8c6b00 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
-    .nav-links { margin-left: auto; display: none; gap: 18px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(11, 11, 12, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .2px; }
+    .brand-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      background: radial-gradient(120% 120% at 0% 0%, var(--gold-2), var(--gold) 42%, #8c6b00 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+    }
+    .nav-links { display: none; gap: 24px; } /* Espaçamento aumentado */
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s ease; }
     .nav-links a:hover { color: var(--fg); }
     .cta-nav { margin-left: auto; }
-    @media (min-width: 860px){ .nav-links{ display:flex; } .cta-nav{ margin-left: 8px; } }
+    @media (min-width: 860px){ .nav-links{ display:flex; margin-left:32px; margin-right:auto; } }
 
     /* ===== BUTTONS ===== */
-    .btn { appearance: none; border: 0; cursor: pointer; padding: 12px 20px; border-radius: 999px; font-weight: 600; letter-spacing: .2px; transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
-    .btn-primary { color: #0f0f10; background: linear-gradient(135deg, var(--gold-2), var(--gold)); box-shadow: 0 8px 22px rgba(212,175,55,.25), inset 0 0 0 1px rgba(255,255,255,.4); }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(212,175,55,.35), inset 0 0 0 1px rgba(255,255,255,.5); }
-    .btn-ghost { color: var(--fg); background: transparent; border: 1px solid rgba(255,255,255,.12); }
-    .btn-ghost:hover { border-color: rgba(255,255,255,.22); }
+    .btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: .2px;
+      font-size: 14px;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+    .btn-primary {
+      color: #0f0f10;
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      box-shadow: 0 6px 18px rgba(212,175,55,.2), inset 0 0 0 .5px rgba(255,255,255,.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(212,175,55,.3), inset 0 0 0 .5px rgba(255,255,255,.5);
+    }
+    .btn-ghost {
+      color: var(--fg);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.05); }
 
     /* ===== HERO ===== */
-    .hero { position: relative; min-height: 92svh; display: grid; place-items: center; overflow: clip; background: radial-gradient(1200px 600px at 50% 10%, rgba(212,175,55,.10), transparent 70%), radial-gradient(1400px 800px at 50% 100%, rgba(245,208,106,.08), transparent 70%); }
-    .hero-inner { max-width: var(--maxw); width: 100%; padding: 80px 20px 40px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; }
-    @media (max-width: 980px){ .hero-inner{ grid-template-columns: 1fr; text-align:center; padding-top: 64px; } }
-    .eyebrow { color: var(--gold-2); font-weight: 700; text-transform: uppercase; letter-spacing: .18em; font-size: 12px; }
-    .title { font-size: clamp(44px, 6vw, 86px); line-height: .95; margin: 10px 0 16px; font-weight: 800; letter-spacing: -0.02em; }
-    .subtitle { color: var(--muted); font-size: clamp(16px, 1.4vw, 20px); max-width: 54ch; margin: 0 auto 0 0; }
-    @media (max-width:980px){ .subtitle{ margin: 0 auto; } }
-    .hero-cta { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; justify-content: flex-start; }
-    @media (max-width:980px){ .hero-cta{ justify-content: center; } }
-
-    .device-frame { position: relative; border-radius: var(--radius); background: linear-gradient(180deg,#202022,#0f0f10); padding: 18px; box-shadow: var(--shadow); }
-    .device-frame::before { content: ""; position: absolute; inset: -1px; border-radius: calc(var(--radius) + 1px); padding: 1px; background: linear-gradient(135deg, rgba(245,208,106,.6), rgba(212,175,55,.25), rgba(255,255,255,.06)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
-    .device-screen { aspect-ratio: 16/10; width: 100%; border-radius: 12px; overflow: hidden; position: relative; background: #0d0d0f; }
-    .device-screen img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05); }
+    .hero {
+      min-height: 90svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 0;
+      background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(212,175,55,.15), transparent);
+    }
+    .hero-content {
+      max-width: 820px;
+      width: 100%;
+    }
+    .eyebrow { color: var(--gold-2); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; font-size: 13px; }
+    .title {
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 1;
+      margin: 12px 0 20px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-wrap: balance; /* Equilibra as linhas do título */
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      max-width: 42ch;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .hero-cta { display: flex; gap: 12px; margin-top: 32px; justify-content: center; flex-wrap: wrap; }
+    .hero-media {
+      margin-top: 64px;
+      width: 100%;
+      max-width: 1000px;
+      aspect-ratio: 16/10;
+    }
+    .hero-media img { width: 100%; height: auto; display: block; filter: saturate(1.05); }
 
     /* ===== SPECS STRIP ===== */
-    .specs { border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); background: #0c0c0d; }
-    .specs-inner { max-width: var(--maxw); margin: 0 auto; padding: 28px 20px; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-    @media (max-width: 900px){ .specs-inner{ grid-template-columns: repeat(2,1fr); } }
+    .specs {
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: #0c0c0d;
+      padding: 48px 0; /* Mais espaçamento vertical */
+    }
+    .specs-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    @media (max-width: 900px){ .specs-inner{ grid-template-columns: repeat(2,1fr); gap: 40px; } }
     @media (max-width: 520px){ .specs-inner{ grid-template-columns: 1fr; } }
-    .spec { display: grid; gap: 6px; }
-    .spec .k { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
-    .spec .v { color: var(--muted); font-size: 14px; }
+    .spec .k { font-weight: 700; font-size: clamp(18px, 3vw, 20px); letter-spacing: -0.02em; }
+    .spec .v { color: var(--muted); font-size: 15px; margin-top: 8px; line-height: 1.4; }
 
     /* ===== PANELS ===== */
-    section.panel { max-width: var(--maxw); margin: 0 auto; padding: 80px 20px; }
-    .grid-2 { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: center; }
-    @media (max-width: 980px){ .grid-2{ grid-template-columns: 1fr; text-align: center; } }
-    .card { background: var(--panel); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
-    .h2 { font-size: clamp(28px, 4.2vw, 48px); line-height: 1.05; margin: 0 0 12px; font-weight: 800; letter-spacing: -0.02em; }
-    .p { color: var(--muted); font-size: 18px; }
+    section.panel { max-width: var(--maxw); margin: 0 auto; padding: 120px 24px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    @media (max-width: 980px){
+      .grid-2{ grid-template-columns: 1fr; text-align: center; gap: 48px; }
+      .grid-2 > div:nth-child(2) { grid-row: 1; } /* Inverte a ordem da imagem no mobile para aparecer primeiro */
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      margin: 0 0 16px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+    .p { color: var(--muted); font-size: 18px; line-height: 1.6; max-width: 50ch; }
+    @media (max-width: 980px){ .p { margin-left: auto; margin-right: auto; } }
+    .chips-container { margin-top:24px; display:flex; gap:10px; flex-wrap:wrap; }
+    @media (max-width: 980px){ .chips-container { justify-content: center; } }
+    .chip { font-size: 14px; padding:10px 16px; border:1px solid rgba(255,255,255,.1); border-radius:999px; background: rgba(255,255,255,.04); }
+
+    /* Layout centralizado para seções de destaque */
+    .centered-layout { text-align: center; }
+    .centered-layout .h2 { margin-left: auto; margin-right: auto; }
+    .centered-layout .p { margin-left: auto; margin-right: auto; }
+    .centered-layout .media-container { margin-top: 48px; }
 
     /* ===== GALLERY ===== */
-    .gallery { display: grid; grid-template-columns: repeat(12,1fr); gap: 14px; }
-    .tile { grid-column: span 6; height: 360px; border-radius: 16px; overflow: hidden; position: relative; background: #0f0f10; border: 1px solid rgba(255,255,255,.06); }
-    .tile.wide { grid-column: span 12; height: 520px; }
+    .gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .tile { height: 420px; border-radius: var(--radius); overflow: hidden; position: relative; background: #0f0f10; }
+    .tile.wide { grid-column: 1 / -1; height: 580px; }
     .tile img, .tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    @media (max-width: 900px){ .tile{ grid-column: span 12; height: 320px; } .tile.wide{ height: 420px; } }
+    @media (max-width: 900px){ .gallery { grid-template-columns: 1fr; } .tile, .tile.wide { height: 380px; } }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+    @media (max-width: 768px){
+      .final-cta-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 40px 24px;
+      }
+      .final-cta-card .h2 { font-size: 32px; }
+      .final-cta-buttons { justify-content: center; }
+    }
+    .final-cta-buttons { display:flex; gap:12px; flex-wrap:wrap; }
+
+
+    /* ===== FAQ ===== */
+    .faq-card {
+      padding: 24px 32px;
+    }
+    .faq-card details { border-bottom: 1px solid rgba(255,255,255,.1); padding: 20px 0; }
+    .faq-card details:last-of-type { border-bottom: 0; }
+    .faq-card details[open] summary ~ * { animation: sweep .5s ease-in-out; }
+    @keyframes sweep {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .faq-card summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+      list-style: none; /* Remove a seta padrão */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-card summary::-webkit-details-marker { display: none; } /* Compatibilidade Webkit */
+    .faq-card summary::after { /* Seta customizada */
+      content: '+';
+      font-size: 24px;
+      color: var(--muted);
+      transition: transform .3s ease;
+    }
+    .faq-card details[open] summary::after { transform: rotate(45deg); }
+    .faq-card .p { font-size: 16px; margin-top: 12px; }
 
     /* ===== FOOTER ===== */
-    footer { border-top: 1px solid rgba(255,255,255,.06); }
-    .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 40px 20px; display: grid; gap: 12px; color: var(--muted); font-size: 14px; }
+    footer { border-top: 1px solid rgba(255,255,255,.08); }
+    .footer-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 48px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-inner div:last-child { text-align: right; }
+    @media (max-width: 600px) {
+      .footer-inner { flex-direction: column; text-align: center !important; }
+      .footer-inner div:last-child { text-align: center; }
+    }
+
 
     /* ===== REVEAL ANIMATIONS ===== */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition-delay: var(--d, 0s); /* Usa a variável --d para delay */
+    }
     .reveal.show { opacity: 1; transform: translateY(0); }
 
-    /* ===== MODAL FULLSCREEN (Mercado Pago) ===== */
-    .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.96); backdrop-filter: blur(6px); z-index: 9999; padding: 0; }
+    /* ===== MODAL FULLSCREEN (Mercado Pago) - Sem alterações na lógica, apenas estilo visual ===== */
+    .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.9); backdrop-filter: blur(8px); z-index: 9999; }
     .modal.open { display: grid; }
-    .modal-head { position: absolute; top: 10px; right: 10px; z-index: 2; display: flex; gap: 8px; }
-    .modal-close, .modal-newtab { appearance: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); color: var(--fg); padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; }
-    .modal-close:hover, .modal-newtab:hover { background: rgba(255,255,255,.14); }
+    .modal-head { position: absolute; top: 16px; right: 16px; z-index: 2; display: flex; gap: 10px; }
+    .modal-close, .modal-newtab { appearance: none; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); color: var(--fg); padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 600; transition: background .2s; }
+    .modal-close:hover, .modal-newtab:hover { background: rgba(255,255,255,.2); }
     .modal-body { width: 100vw; height: calc(var(--vh) * 100); position: relative; }
     .modal-body iframe { width: 100%; height: 100%; border: 0; display: block; background:#0c0c0d; }
-
-    /* Loader */
-    .loader { position:absolute; inset:0; display:grid; place-items:center; background: rgba(0,0,0,.15); z-index:1; }
+    .loader { position:absolute; inset:0; display:grid; place-items:center; background: rgba(0,0,0,.3); z-index:1; }
     .spinner { width: 48px; height: 48px; border-radius: 50%; border: 4px solid rgba(255,255,255,.2); border-top-color: var(--gold-2); animation: spin 1s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ACCESSIBILITY */
-    @media (prefers-reduced-motion: reduce){ .reveal { transition: none; opacity: 1 !important; transform: none !important; } .btn { transition: none; } }
+    @media (prefers-reduced-motion: reduce){ * { transition: none !important; animation: none !important; } .reveal { opacity: 1 !important; transform: none !important; } }
   </style>
 </head>
 <body>
-  <!-- ===== NAV ===== -->
+
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand">
+      <a href="#" class="brand" aria-label="Página inicial">
         <div class="brand-icon" aria-hidden="true"></div>
-        <span>MacBook Pro</span>
-      </div>
+        <span>MacBook Pro</span>
+      </a>
       <div class="nav-links">
-        <a href="#design">Design</a>
         <a href="#performance">Performance</a>
         <a href="#tela">Tela</a>
         <a href="#bateria">Bateria</a>
@@ -129,54 +310,44 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
   <header class="hero">
-    <div class="hero-inner">
-      <div class="copy reveal" style="--d:0s">
-        <div class="eyebrow">Edição Gold</div>
-        <h1 class="title">Potência absurda. Elegância absoluta.</h1>
-        <p class="subtitle">Processador de última geração, até 24 horas de bateria e tela de alto brilho com precisão de cores. Tudo em um design refinado com detalhes dourados.</p>
-        <div class="hero-cta">
-          <button class="btn btn-primary" data-open-checkout>Comprar agora</button>
-          <a class="btn btn-ghost" href="#design">Ver detalhes</a>
-        </div>
+    <div class="hero-content reveal">
+      <div class="eyebrow">Edição Gold</div>
+      <h1 class="title">Potência absurda. Elegância absoluta.</h1>
+      <p class="subtitle">O chip mais avançado, até 24 horas de bateria e tela Liquid Retina XDR. Tudo em um design refinado com detalhes exclusivos em ouro.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" data-open-checkout>Comprar por R$ 12.999</button>
+        <a class="btn btn-ghost" href="#performance">Ver detalhes</a>
       </div>
-      <div class="media reveal" style="--d:.1s">
-        <div class="device-frame">
-          <div class="device-screen">
-            <!-- Substitua pela sua imagem oficial do produto -->
-            <img loading="eager" alt="MacBook Pro em ângulo heroico" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1920&auto=format&fit=crop" />
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="hero-media reveal" style="--d: .2s;">
+      <img loading="eager" alt="MacBook Pro Gold Edition em vista frontal" src="imagem01.png" />
     </div>
   </header>
 
-  <!-- ===== SPECS STRIP ===== -->
   <div class="specs" id="design">
     <div class="specs-inner">
-      <div class="spec reveal"><div class="k">Chip de última geração</div><div class="v">Desempenho profissional com eficiência surpreendente.</div></div>
-      <div class="spec reveal"><div class="k">Até 24 h</div><div class="v">Autonomia para o seu dia — e noite.</div></div>
-      <div class="spec reveal"><div class="k">Liquid Retina</div><div class="v">Alto brilho e contraste com fidelidade extrema.</div></div>
-      <div class="spec reveal"><div class="k">Alumínio monobloco</div><div class="v">Resistência e acabamento premium.</div></div>
+      <div class="spec reveal" style="--d: 0s;"><div class="k">Chip de última geração</div><div class="v">Desempenho profissional com eficiência energética surpreendente.</div></div>
+      <div class="spec reveal" style="--d: .1s;"><div class="k">Até 24h de Bateria</div><div class="v">Autonomia para o seu dia inteiro — e noite adentro.</div></div>
+      <div class="spec reveal" style="--d: .2s;"><div class="k">Tela Liquid Retina XDR</div><div class="v">Brilho extremo, contraste profundo e cores de cinema.</div></div>
+      <div class="spec reveal" style="--d: .3s;"><div class="k">Alumínio Reciclado</div><div class="v">Estrutura monobloco resistente com acabamento premium.</div></div>
     </div>
   </div>
 
-  <!-- ===== PERFORMANCE ===== -->
   <section class="panel" id="performance">
     <div class="grid-2">
-      <div class="card reveal">
+      <div class="reveal">
         <h2 class="h2">Velocidade que inspira confiança.</h2>
-        <p class="p">Fluxos de trabalho pesados, edição de vídeo 8K, render 3D e múltiplas trilhas de áudio: tudo acontece com suavidade e silêncio. A arquitetura avançada entrega performance de ponta com consumo de energia ultrabaixo.</p>
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <div class="chip" style="padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:999px;">CPU multi‑núcleo</div>
-          <div class="chip" style="padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:999px;">GPU de alto desempenho</div>
-          <div class="chip" style="padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:999px;">Neural Engine</div>
+        <p class="p">Fluxos de trabalho pesados, edição de vídeo 8K e renderizações complexas. Tudo acontece com suavidade e silêncio. A arquitetura avançada entrega performance de ponta com consumo de energia ultrabaixo.</p>
+        <div class="chips-container">
+          <div class="chip">CPU multi‑núcleo</div>
+          <div class="chip">GPU de alto desempenho</div>
+          <div class="chip">Neural Engine</div>
         </div>
       </div>
-      <div class="reveal">
-        <div class="tile wide" style="height:420px;">
-          <video autoplay muted loop playsinline poster="" style="filter:saturate(1.08);">
+      <div class="reveal" style="--d: .2s;">
+        <div class="tile wide" style="height:520px;">
+          <video autoplay muted loop playsinline poster="">
             <source src="https://cdn.coverr.co/videos/coverr-a-time-lapse-of-coding-1709/1080p.mp4" type="video/mp4" />
           </video>
         </div>
@@ -184,94 +355,83 @@
     </div>
   </section>
 
-  <!-- ===== DISPLAY ===== -->
-  <section class="panel" id="tela">
-    <div class="grid-2">
-      <div class="reveal">
-        <div class="tile" style="height:460px;">
-          <img alt="Tela com cores vívidas" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1920&auto=format&fit=crop"/>
-        </div>
-      </div>
-      <div class="card reveal">
-        <h2 class="h2">Cores que saltam. Pretos que impressionam.</h2>
-        <p class="p">A tela de alta faixa dinâmica apresenta brilho intenso, pretos profundos e precisão de cor excepcional, ideal para fotografia, cinema e design. True Tone e ampla gama de cores deixam tudo mais natural.</p>
-      </div>
+  <section class="panel centered-layout" id="tela">
+    <div class="reveal">
+      <h2 class="h2">Cores que saltam. Pretos que somem.</h2>
+      <p class="p">A tela de alta faixa dinâmica (XDR) apresenta brilho intenso, pretos profundos e precisão de cor excepcional, ideal para fotografia, cinema e design. A tecnologia True Tone adapta tudo ao seu ambiente.</p>
+    </div>
+    <div class="media-container reveal" style="--d: .2s;">
+        <img alt="Tela com cores vívidas exibindo um editor de imagens" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1920&auto=format&fit=crop" style="border-radius: var(--radius); width: 100%; height: auto;"/>
     </div>
   </section>
 
-  <!-- ===== BATTERY ===== -->
   <section class="panel" id="bateria">
     <div class="grid-2">
-      <div class="card reveal">
-        <h2 class="h2">Até 24 horas sem tomada.</h2>
-        <p class="p">Trabalhe, crie e reproduza por muito mais tempo. O sistema equilibra performance e eficiência para entregar autonomia de ponta — mesmo em tarefas profissionais.</p>
-      </div>
       <div class="reveal">
-        <div class="tile" style="height:420px; background: radial-gradient(600px 240px at 70% 30%, rgba(245,208,106,.14), transparent), #0c0c0d; display:grid; place-items:center;">
+        <h2 class="h2">Até 24 horas sem precisar de tomada.</h2>
+        <p class="p">Trabalhe, crie e assista por muito mais tempo. O sistema equilibra performance e eficiência para entregar a maior autonomia já vista em um Mac — mesmo em tarefas profissionais.</p>
+      </div>
+      <div class="reveal" style="--d: .2s;">
+        <div class="tile" style="height:420px; background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(245,208,106,.1), transparent), #0c0c0d; display:grid; place-items:center;">
           <div style="text-align:center;">
-            <div style="font-size:68px; font-weight:800; letter-spacing:-.02em;">24<span style="font-size:.6em; color:var(--muted);">h</span></div>
-            <div style="color:var(--muted);">Autonomia estimada</div>
+            <div style="font-size: clamp(72px, 10vw, 92px); font-weight:800; letter-spacing:-.04em; line-height: 1;">24<span style="font-size:.5em; color:var(--muted); vertical-align: super; margin-left: 4px;">h</span></div>
+            <div style="color:var(--muted); margin-top: 8px;">Autonomia de bateria</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== GALLERY ===== -->
-  <section class="panel" aria-label="Galeria de detalhes">
+  <section class="panel" aria-label="Galeria de detalhes do produto">
     <div class="gallery">
-      <figure class="tile reveal"><img alt="Detalhe 1" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1920&auto=format&fit=crop"/></figure>
-      <figure class="tile reveal"><img alt="Detalhe 2" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920&auto=format&fit=crop"/></figure>
-      <figure class="tile wide reveal"><img alt="Detalhe amplo" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2400&auto=format&fit=crop"/></figure>
+      <figure class="tile reveal"><img alt="Close-up do teclado retroiluminado" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1920&auto=format&fit=crop"/></figure>
+      <figure class="tile reveal" style="--d: .1s;"><img alt="Notebook aberto em uma mesa de trabalho" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920&auto=format&fit=crop"/></figure>
+      <figure class="tile wide reveal" style="--d: .2s;"><img alt="Visão ampla do MacBook Pro em um ambiente moderno" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2400&auto=format&fit=crop"/></figure>
     </div>
   </section>
 
-  <!-- ===== CTA / COMPRAR ===== -->
   <section class="panel" id="comprar">
-    <div class="card reveal" style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap: 16px;">
+    <div class="final-cta-card reveal">
       <div>
-        <h2 class="h2" style="margin:0 0 8px;">Pronto para dar o próximo passo?</h2>
-        <p class="p" style="margin:0;">Experimente potência profissional em um design impecável. Entrega rápida e garantia.</p>
+        <h2 class="h2" style="margin:0 0 8px;">Pronto para o próximo nível?</h2>
+        <p class="p" style="margin:0;">Experimente potência profissional em um design impecável. Compre com segurança e receba em casa.</p>
       </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+      <div class="final-cta-buttons">
         <button class="btn btn-ghost" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">Dúvidas</button>
         <button class="btn btn-primary" data-open-checkout>Comprar agora</button>
       </div>
     </div>
   </section>
 
-  <!-- ===== FAQ ===== -->
   <section class="panel" id="faq">
-    <div class="card reveal">
-      <h2 class="h2">Perguntas frequentes</h2>
+    <div class="card faq-card reveal">
+      <h2 class="h2" style="text-align: center; margin-bottom: 24px;">Perguntas Frequentes</h2>
       <details open>
-        <summary style="cursor:pointer; font-weight:600; margin: 8px 0 6px;">Como funciona o pagamento?</summary>
-        <p class="p">Ao clicar em “Comprar agora”, abrimos um checkout seguro do Mercado Pago. Se for permitido, ele aparece em tela cheia aqui mesmo; se não, abrimos em nova aba automaticamente.</p>
+        <summary>Como funciona o pagamento?</summary>
+        <p class="p">Ao clicar em “Comprar agora”, abrimos um checkout seguro do Mercado Pago. Se for permitido pelo navegador, ele aparece em tela cheia na própria página. Caso contrário, uma nova aba é aberta automaticamente para sua segurança.</p>
       </details>
       <details>
-        <summary style="cursor:pointer; font-weight:600; margin: 8px 0 6px;">Quais são as opções de envio?</summary>
-        <p class="p">Oferecemos entrega rápida com código de rastreio. As opções e prazos aparecem no checkout conforme o seu CEP.</p>
+        <summary>Quais são as opções de envio?</summary>
+        <p class="p">Oferecemos entrega rápida para todo o Brasil com código de rastreio. As opções e prazos exatos serão calculados no checkout com base no seu CEP.</p>
       </details>
       <details>
-        <summary style="cursor:pointer; font-weight:600; margin: 8px 0 6px;">Tenho garantia?</summary>
-        <p class="p">Sim. Garantia oficial do fabricante e suporte dedicado.</p>
+        <summary>Este produto tem garantia?</summary>
+        <p class="p">Sim, todos os nossos produtos contam com a garantia oficial do fabricante de 1 ano e suporte técnico dedicado para qualquer dúvida ou problema.</p>
       </details>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-inner">
-      <div>© <span id="year"></span> Sua Marca. Inspirado no estilo Apple, conteúdo meramente ilustrativo.</div>
-      <div>Imagens e vídeos são exemplos. Substitua pelos seus arquivos oficiais.</div>
+      <div>© <span id="year"></span> Sua Marca. Todos os direitos reservados.</div>
+      <div>Design inspirado na Apple Inc. Conteúdo e imagens meramente ilustrativos.</div>
     </div>
   </footer>
 
-  <!-- ===== MODAL FULLSCREEN CHECKOUT MERCADO PAGO ===== -->
   <div class="modal" id="mp-modal" aria-hidden="true" role="dialog" aria-label="Checkout Mercado Pago">
     <div class="modal-head">
       <button class="modal-newtab" id="open-newtab" title="Abrir em nova aba">Abrir em nova aba</button>
-      <button class="modal-close" id="close-modal" aria-label="Fechar">Fechar ×</button>
+      <button class="modal-close" id="close-modal" aria-label="Fechar">Fechar</button>
     </div>
     <div class="modal-body">
       <div class="loader" id="loader"><div class="spinner"></div></div>
@@ -288,10 +448,20 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Reveal on scroll
-    const io = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          // Adiciona um delay na transição baseado no atributo style="--d:Xs"
+          const delay = parseFloat(e.target.style.getPropertyValue('--d')) * 1000 || 0;
+          e.target.style.transitionDelay = `${delay}ms`;
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // ===== Checkout logic (fullscreen + fallback anti-popup) =====
+    // ===== Checkout logic (fullscreen + fallback anti-popup) - INTACTO =====
     const modal = document.getElementById('mp-modal');
     const iframe = document.getElementById('mp-iframe');
     const loader = document.getElementById('loader');
@@ -348,8 +518,8 @@
 
     // Aviso no console se o link não foi configurado
     window.addEventListener('load', () => {
-      if (!CHECKOUT_LINK || CHECKOUT_LINK.includes('COLE_SEU_LINK_DO_MERCADO_PAGO_AQUI')) {
-        console.warn('⚠ Substitua CHECKOUT_LINK pelo link do Mercado Pago.');
+      if (!CHECKOUT_LINK || CHECKOUT_LINK.includes('https://mpago.la/2RQR7pY')) { // Use seu link aqui para o aviso funcionar corretamente
+        console.warn('⚠ ATENÇÃO: O link do checkout é um exemplo. Substitua a constante CHECKOUT_LINK no script pelo seu link de pagamento do Mercado Pago.');
       }
     });
   </script>
