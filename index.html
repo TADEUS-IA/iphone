@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MacBook Pro — Edição Gold</title>
+  <meta name="description" content="Landing page premium estilo Apple para MacBook Pro — animações suaves, visual minimalista e checkout Mercado Pago embutido." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Usamos Inter como fallback clean; se você tiver licença de SF Pro, pode trocar a família abaixo -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0c;              /* fundo quase preto, elegante */
+      --fg: #e7e7ea;              /* texto principal */
+      --muted: #a1a1a6;           /* texto secundário */
+      --panel: #111113;           /* cartões */
+      --gold: #d4af37;            /* dourado premium */
+      --gold-2: #f5d06a;          /* brilho */
+      --accent: var(--gold);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --maxw: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(180%) blur(16px);
+      background: linear-gradient(to bottom, rgba(11,11,12,.8), rgba(11,11,12,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 12px 20px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .3px; }
+    .brand-icon { width: 22px; height: 22px; border-radius: 6px; background: radial-gradient(120% 120% at 0% 0%, var(--gold-2), var(--gold) 42%, #8c6b00 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+    .nav-links { margin-left: auto; display: flex; gap: 18px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: var(--fg); }
+    .cta-nav { margin-left: 8px; }
+
+    /* ===== BUTTONS ===== */
+    .btn { appearance: none; border: 0; cursor: pointer; padding: 12px 20px; border-radius: 999px; font-weight: 600; letter-spacing: .2px; transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
+    .btn-primary { color: #0f0f10; background: linear-gradient(135deg, var(--gold-2), var(--gold)); box-shadow: 0 8px 22px rgba(212,175,55,.25), inset 0 0 0 1px rgba(255,255,255,.4); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(212,175,55,.35), inset 0 0 0 1px rgba(255,255,255,.5); }
+    .btn-ghost { color: var(--fg); background: transparent; border: 1px solid rgba(255,255,255,.12); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.22); }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 92vh; display: grid; place-items: center; overflow: clip;
+      background: radial-gradient(1200px 600px at 50% 10%, rgba(212,175,55,.10), transparent 70%),
+                  radial-gradient(1400px 800px at 50% 100%, rgba(245,208,106,.08), transparent 70%);
+    }
+    .hero-inner { max-width: var(--maxw); width: 100%; padding: 80px 20px 40px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; }
+    @media (max-width: 980px){ .hero-inner{ grid-template-columns: 1fr; text-align:center; } }
+
+    .eyebrow { color: var(--gold-2); font-weight: 700; text-transform: uppercase; letter-spacing: .18em; font-size: 12px; }
+    .title { font-size: clamp(44px, 6vw, 86px); line-height: .95; margin: 10px 0 16px; font-weight: 800; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); font-size: clamp(16px, 1.4vw, 20px); max-width: 54ch; }
+    .hero-cta { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; justify-content: flex-start; }
+    @media (max-width:980px){ .hero-cta{ justify-content: center; } }
+
+    .device-frame { position: relative; border-radius: var(--radius); background: linear-gradient(180deg,#202022,#0f0f10); padding: 18px; box-shadow: var(--shadow); }
+    .device-frame::before { content: ""; position: absolute; inset: -1px; border-radius: calc(var(--radius) + 1px); padding: 1px; background: linear-gradient(135deg, rgba(245,208,106,.6), rgba(212,175,55,.25), rgba(255,255,255,.06)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+    .device-screen { aspect-ratio: 16/10; width: 100%; border-radius: 12px; overflow: hidden; position: relative; background: #0d0d0f; }
+    .device-screen img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05); }
+
+    /* ===== SPECS STRIP ===== */
+    .specs { border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); background: #0c0c0d; }
+    .specs-inner { max-width: var(--maxw); margin: 0 auto; padding: 28px 20px; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    @media (max-width: 900px){ .specs-inner{ grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 520px){ .specs-inner{ grid-template-columns: 1fr; } }
+    .spec { display: grid; gap: 6px; }
+    .spec .k { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+    .spec .v { color: var(--muted); font-size: 14px; }
+
+    /* ===== PANELS ===== */
+    section.panel { max-width: var(--maxw); margin: 0 auto; padding: 80px 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: center; }
+    @media (max-width: 980px){ .grid-2{ grid-template-columns: 1fr; text-align: center; } }
+    .card { background: var(--panel); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+    .h2 { font-size: clamp(28px, 4.2vw, 48px); line-height: 1.05; margin: 0 0 12px; font-weight: 800; letter-spacing: -0.02em; }
+    .p { color: var(--muted); font-size: 18px; }
+
+    /* ===== GALLERY ===== */
+    .gallery { display: grid; grid-template-columns: repeat(12,1fr); gap: 14px; }
+    .tile { grid-column: span 6; height: 360px; border-radius: 16px; overflow: hidden; position: relative; background: #0f0f10; border: 1px solid rgba(255,255,255,.06); }
+    .tile.wide { grid-column: span 12; height: 520px; }
+    .tile img, .tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 900px){ .tile{ grid-column: span 12; height: 320px; } .tile.wide{ height: 420px; } }
+
+    /* ===== FOOTER ===== */
+    footer { border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 40px 20px; display: grid; gap: 12px; color: var(--muted); font-size: 14px; }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* ===== MODAL (Mercado Pago) ===== */
+    .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); z-index: 100; padding: 20px; }
+    .modal.open { display: grid; }
+    .modal-box { width: min(100%, 760px); background: #111; border: 1px solid rgba(255,255,255,.08); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; position: relative; }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: linear-gradient(180deg, rgba(245,208,106,.12), rgba(245,208,106,.03)); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .modal-title { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: radial-gradient(120% 120% at 20% 20%, var(--gold-2), var(--gold)); box-shadow: 0 0 12px rgba(245,208,106,.45); }
+    .modal-close { appearance: none; background: transparent; border: 0; color: var(--fg); font-size: 22px; cursor: pointer; }
+    .modal-body { height: 72vh; max-height: 760px; background: #0c0c0d; }
+    .modal-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    /* ===== ACCESSIBILITY ===== */
+    @media (prefers-reduced-motion: reduce){
+      .reveal { transition: none; opacity: 1 !important; transform: none !important; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true"></div>
+        <span>MacBook Pro</span>
+      </div>
+      <div class="nav-links">
+        <a href="#design">Design</a>
+        <a href="#performance">Performance</a>
+        <a href="#tela">Tela</a>
+        <a href="#bateria">Bateria</a>
+        <a href="#comprar">Comprar</a>
+      </div>
+      <button class="btn btn-primary cta-nav" data-open-checkout>Comprar agora</button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="copy reveal" style="--d:0s">
+        <div class="eyebrow">Edição Gold</div>
+        <h1 class="title">Potência absurda. Elegância absoluta.</h1>
+        <p class="subtitle">Processador de última geração, até 24 horas de bateria e tela de alto brilho com precisão de cores. Tudo em um design refinado com detalhes dourados.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" data-open-checkout>Comprar agora</button>
+          <a class="btn btn-ghost" href="#design">Ver detalhes</a>
+        </div>
+      </div>
+      <div class="media reveal" style="--d:.1s">
+        <div class="device-frame">
+          <div class="device-screen">
+            <!-- SUBSTITUA O SRC PELAS SUAS IMAGENS OFICIAIS -->
+            <img loading="eager" alt="MacBook Pro em ângulo heroico" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1920&auto=format&fit=crop" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SPECS STRIP ===== -->
+  <div class="specs" id="design">
+    <div class="specs-inner">
+      <div class="spec reveal"><div class="k">Chip de última geração</div><div class="v">Desempenho profissional com eficiência surpreendente.</div></div>
+      <div class="spec reveal"><div class="k">Até 24 h</div><div class="v">Autonomia para o seu dia — e noite.</div></div>
+      <div class="spec reveal"><div class="k">Liquid Retina</div><div class="v">Alto brilho e contraste com fidelidade extrema.</div></div>
+      <div class="spec reveal"><div class="k">Alumínio monobloco</div><div class="v">Resistência e acabamento premium.</div></div>
+    </div>
+  </div>
+
+  <!-- ===== PERFORMANCE ===== -->
+  <section class="panel" id="performance">
+    <div class="grid-2">
+      <div class="card reveal">
+        <h2 class="h2">Velocidade que inspira confiança.</h2>
+        <p class="p">Fluxos de trabalho pesados, edição de vídeo 8K, render 3D e múltiplas trilhas de áudio: tudo acontece com suavidade e silêncio. A arquitetura avançada entrega performance de ponta com consumo de energia ultrabaixo.</p>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="chip" style="padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:999px;">CPU multi‑núcleo</div>
+          <div class="chip" style="padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:999px;">GPU de alto desempenho</div>
+          <div class="chip" style="padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:999px;">Neural Engine</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="tile wide" style="height:420px;">
+          <video autoplay muted loop playsinline poster="" style="filter:saturate(1.08);">
+            <!-- Opcional: troque por um clipe do produto -->
+            <source src="https://cdn.coverr.co/videos/coverr-a-time-lapse-of-coding-1709/1080p.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DISPLAY ===== -->
+  <section class="panel" id="tela">
+    <div class="grid-2">
+      <div class="reveal">
+        <div class="tile" style="height:460px;">
+          <img alt="Tela com cores vívidas" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1920&auto=format&fit=crop"/>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h2 class="h2">Cores que saltam. Pretos que impressionam.</h2>
+        <p class="p">A tela de alta faixa dinâmica apresenta brilho intenso, pretos profundos e precisão de cor excepcional, ideal para fotografia, cinema e design. True Tone e ampla gama de cores deixam tudo mais natural.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BATTERY ===== -->
+  <section class="panel" id="bateria">
+    <div class="grid-2">
+      <div class="card reveal">
+        <h2 class="h2">Até 24 horas sem tomada.</h2>
+        <p class="p">Trabalhe, crie e reproduza por muito mais tempo. O sistema equilibra performance e eficiência para entregar autonomia de ponta — mesmo em tarefas profissionais.</p>
+      </div>
+      <div class="reveal">
+        <div class="tile" style="height:420px; background: radial-gradient(600px 240px at 70% 30%, rgba(245,208,106,.14), transparent), #0c0c0d; display:grid; place-items:center;">
+          <div style="text-align:center;">
+            <div style="font-size:68px; font-weight:800; letter-spacing:-.02em;">24<span style="font-size:.6em; color:var(--muted);">h</span></div>
+            <div style="color:var(--muted);">Autonomia estimada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="panel" aria-label="Galeria de detalhes">
+    <div class="gallery">
+      <figure class="tile reveal"><img alt="Detalhe 1" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1920&auto=format&fit=crop"/></figure>
+      <figure class="tile reveal"><img alt="Detalhe 2" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920&auto=format&fit=crop"/></figure>
+      <figure class="tile wide reveal"><img alt="Detalhe amplo" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2400&auto=format&fit=crop"/></figure>
+    </div>
+  </section>
+
+  <!-- ===== CTA / COMPRAR ===== -->
+  <section class="panel" id="comprar">
+    <div class="card reveal" style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap: 16px;">
+      <div>
+        <h2 class="h2" style="margin:0 0 8px;">Pronto para dar o próximo passo?</h2>
+        <p class="p" style="margin:0;">Experimente potência profissional em um design impecável. Entrega rápida e garantia.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+        <button class="btn btn-ghost" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">Dúvidas</button>
+        <button class="btn btn-primary" data-open-checkout>Comprar agora</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="panel" id="faq">
+    <div class="card reveal">
+      <h2 class="h2">Perguntas frequentes</h2>
+      <details open>
+        <summary style="cursor:pointer; font-weight:600; margin: 8px 0 6px;">Como funciona o pagamento?</summary>
+        <p class="p">Ao clicar em “Comprar agora”, abrimos um checkout seguro do Mercado Pago em um modal. Você finaliza sem sair desta página.</p>
+      </details>
+      <details>
+        <summary style="cursor:pointer; font-weight:600; margin: 8px 0 6px;">Quais são as opções de envio?</summary>
+        <p class="p">Oferecemos entrega rápida com código de rastreio. As opções e prazos aparecem no checkout conforme o seu CEP.</p>
+      </details>
+      <details>
+        <summary style="cursor:pointer; font-weight:600; margin: 8px 0 6px;">Tenho garantia?</summary>
+        <p class="p">Sim. Garantia oficial do fabricante e suporte dedicado.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Sua Marca. Inspirado no estilo Apple, conteúdo meramente ilustrativo.</div>
+      <div>Imagens e vídeos são exemplos. Substitua pelos seus arquivos oficiais.</div>
+    </div>
+  </footer>
+
+  <!-- ===== MODAL CHECKOUT MERCADO PAGO ===== -->
+  <div class="modal" id="mp-modal" aria-hidden="true" role="dialog" aria-label="Checkout Mercado Pago">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-title"><span class="dot"></span> Checkout seguro</div>
+        <button class="modal-close" aria-label="Fechar" data-close>×</button>
+      </div>
+      <div class="modal-body">
+        <!-- 📌 COLE AQUI O SEU LINK DO MERCADO PAGO -->
+        <iframe id="mp-iframe" src="COLE_SEU_LINK_DO_MERCADO_PAGO_AQUI" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Ano no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Intersection Observer para revelar elementos
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Modal Mercado Pago
+    const modal = document.getElementById('mp-modal');
+    const openers = document.querySelectorAll('[data-open-checkout]');
+    const closer = modal.querySelector('[data-close]');
+
+    function openModal(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); }
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+
+    openers.forEach(btn => btn.addEventListener('click', openModal));
+    closer.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    // Proteção: alerta se o link do MP não foi configurado
+    window.addEventListener('load', () => {
+      const src = document.getElementById('mp-iframe').getAttribute('src');
+      if (!src || src.includes('COLE_SEU_LINK_DO_MERCADO_PAGO_AQUI')) {
+        console.warn('\u26A0 Substitua o SRC do iframe pelo link do Mercado Pago.');
+      }
+    });
+  </script>
+</body>
+</html>
