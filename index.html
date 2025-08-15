@@ -3,23 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MacBook Pro — Gold Edition</title>
-    <meta name="description" content="Experimente o poder e a elegância do MacBook Pro Gold Edition. Performance de última geração, tela Liquid Retina XDR e design incomparável." />
+    <title>iPhone 14 128GB - Novo, Lacrado com Garantia</title>
+    <meta name="description" content="Compre o iPhone 14 128GB novo, lacrado e com garantia Apple de 1 ano. Câmera incrível, chip A15 Bionic e a melhor tela. Aproveite agora!" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ================================================
-           1. RESET E VARIÁVEIS GLOBAIS
-           ================================================ */
+            1. RESET E VARIÁVEIS GLOBAIS
+            ================================================ */
         :root {
             --c-bg: #000000;
             --c-bg-panel: #111112;
             --c-fg: #f5f5f7;
             --c-fg-subtle: #a1a1a6;
             --c-border: rgba(255, 255, 255, 0.1);
-            --c-gold: #e2b34a;
-            --c-gold-light: #f5d06a;
+            --c-gold: #0071e3; /* Alterado para o azul da Apple para combinar com o iPhone */
+            --c-gold-light: #2997ff;
             --maxw: 1024px;
             --radius: 28px;
             --nav-h: 56px;
@@ -37,8 +37,8 @@
         img, video { display: block; max-width: 100%; height: auto; }
 
         /* ================================================
-           2. NAVEGAÇÃO E ELEMENTOS DE UI
-           ================================================ */
+            2. NAVEGAÇÃO E ELEMENTOS DE UI
+            ================================================ */
         .nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             height: var(--nav-h);
@@ -54,16 +54,17 @@
         .nav .brand { font-weight: 600; font-size: 17px; }
         .btn {
             appearance: none; border: none; cursor: pointer;
-            background: var(--c-gold); color: #000;
+            background: var(--c-gold); color: #fff;
             padding: 10px 20px; border-radius: 999px;
             font-size: 15px; font-weight: 600; text-decoration: none;
             display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(226, 179, 74, 0.2);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2);
         }
         .btn:hover {
             transform: scale(1.05) translateY(-1px);
-            box-shadow: 0 8px 25px rgba(226, 179, 74, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 113, 227, 0.3);
+            background: var(--c-gold-light);
         }
         .section-title {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
@@ -83,8 +84,8 @@
         }
 
         /* ================================================
-           3. SEÇÃO HERO (COM IMAGEM DE FUNDO)
-           ================================================ */
+            3. SEÇÃO HERO
+            ================================================ */
         .hero {
             height: 100svh;
             position: relative;
@@ -93,22 +94,17 @@
             justify-content: center;
             text-align: center;
             padding: 0 24px;
-            /* ADIÇÃO DA IMAGEM DE FUNDO ABAIXO */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagem01.webp'); /* <<< SUBSTITUA A URL PELA SUA IMAGEM */
-            background-size: cover;
-            background-position: center;
         }
-        .hero video {
+        .hero .hero-video-bg {
             position: absolute; top: 50%; left: 50%;
             width: 100%; height: 100%;
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: -1;
-            filter: brightness(0.7);
-            opacity: 0.8; /* Leve transparência para a imagem de fundo aparecer */
+            filter: brightness(0.6);
         }
         .hero-content {
-            position: relative; /* Garante que o texto fique acima de tudo */
+            position: relative;
             z-index: 1;
             animation: hero-fade-in 1.5s ease-out forwards;
         }
@@ -122,9 +118,6 @@
             letter-spacing: -0.05em;
             line-height: 1;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--c-gold-light), var(--c-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         .hero-subtitle {
             font-size: clamp(1.2rem, 4vw, 1.75rem);
@@ -134,11 +127,9 @@
             text-wrap: balance;
         }
         
-        /* O restante do CSS permanece o mesmo... */
-
         /* ================================================
-           4. SEÇÃO DESTAQUES (Feature Grid)
-           ================================================ */
+            4. SEÇÃO DESTAQUES (Feature Grid)
+            ================================================ */
         .features { padding: 120px 24px; background: var(--c-bg-panel); }
         .feature-grid {
             display: grid;
@@ -152,10 +143,9 @@
         .feature-item h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; }
         .feature-item p { font-size: 1rem; color: var(--c-fg-subtle); line-height: 1.6; }
 
-
         /* ================================================
-           5. SEÇÃO CHIPS (Alinhamento Corrigido)
-           ================================================ */
+            5. SEÇÃO CORES (Adaptado da Seção "Chips")
+            ================================================ */
         .chips { padding: 120px 0; overflow-x: hidden; }
         .chip-scroller-wrapper {
             max-width: var(--maxw);
@@ -172,7 +162,9 @@
         }
         @media (min-width: 1020px) {
             .chip-scroller {
+                flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha */
                 justify-content: center;
+                gap: 40px; /* Aumenta o espaçamento geral */
                 overflow-x: hidden;
             }
         }
@@ -182,11 +174,11 @@
         .chip-scroller::-webkit-scrollbar-thumb:hover { background: #666; }
 
         .chip-card {
-            flex: 0 0 clamp(280px, 80vw, 320px);
+            flex: 0 0 clamp(300px, 80vw, 380px); /* Card maior */
             scroll-snap-align: center;
             background: var(--c-bg-panel);
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 40px 32px; /* Aumenta o espaçamento interno */
             border: 1px solid var(--c-border);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -195,19 +187,18 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .chip-card img { width: 100px; margin: 0 auto 24px auto; }
+        .chip-card img { 
+            width: 500px; /* Imagem mais larga */
+            height: 280px; /* Imagem mais alta */
+            object-fit: contain; 
+            margin: 0 auto 24px auto; 
+        }
         .chip-card h3 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; }
         .chip-card p { color: var(--c-fg-subtle); margin-bottom: 24px; font-size: 1rem; line-height: 1.6; }
-        .chip-card ul { list-style: none; text-align: left; }
-        .chip-card li { margin-bottom: 10px; padding-left: 24px; position: relative; }
-        .chip-card li::before {
-            content: '✓'; color: var(--c-gold);
-            position: absolute; left: 0; font-weight: 600;
-        }
 
         /* ================================================
-           6. SEÇÕES DE DETALHES (Harmonia de Texto e Imagem)
-           ================================================ */
+            6. SEÇÕES DE DETALHES (Texto e Imagem)
+            ================================================ */
         .specs { padding: 60px 24px; }
         .specs-grid {
             max-width: var(--maxw); margin: 80px auto;
@@ -246,9 +237,9 @@
         }
         
         /* ================================================
-           7. SEÇÃO MACOS (Full-bleed)
-           ================================================ */
-        .macos {
+            7. SEÇÃO IOS (Adaptado da Seção macOS)
+            ================================================ */
+        .ios {
             padding: 120px 24px;
             position: relative;
             min-height: 80svh;
@@ -258,18 +249,18 @@
             background-color: var(--c-bg-panel);
             overflow: hidden;
         }
-        .macos-bg {
+        .ios-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0.2;
         }
-        .macos-content { position: relative; }
-        .macos-content h2 {
+        .ios-content { position: relative; }
+        .ios-content h2 {
             font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 800;
             letter-spacing: -0.04em;
             margin-bottom: 16px;
         }
-        .macos-content p {
+        .ios-content p {
             font-size: clamp(1.25rem, 3vw, 1.75rem);
             color: var(--c-fg-subtle);
             max-width: 650px;
@@ -278,8 +269,8 @@
         }
 
         /* ================================================
-           8. SEÇÃO CTA E FOOTER
-           ================================================ */
+            8. SEÇÃO CTA E FOOTER
+            ================================================ */
         .cta { padding: 120px 24px; text-align: center; }
         footer {
             background: var(--c-bg-panel);
@@ -310,8 +301,8 @@
         }
 
         /* ================================================
-           9. ANIMAÇÕES DE REVELAÇÃO
-           ================================================ */
+            9. ANIMAÇÕES DE REVELAÇÃO
+            ================================================ */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -324,19 +315,19 @@
 
     <nav class="nav">
         <div class="nav-inner">
-            <div class="brand">MacBook Pro</div>
+            <div class="brand">iPhone 14 128GB</div>
             <a href="#cta-final" class="btn">Comprar</a>
         </div>
     </nav>
 
     <main>
         <section class="hero">
-            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://www.apple.com/v/macbook-pro/an/images/overview/hero/hero_14_16__b117f7d2emle_small.jpg">
-                <source src="https://www.apple.com/105/media/us/macbook-pro/2023/b0c961e7-7428-411a-a63e-d9a39a385f96/anim/hero/large.mp4" type="video/mp4">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://www.apple.com/v/iphone-14/k/images/overview/hero/hero_iphone_14__esmpdxj3qd4y_large.jpg">
+                <source src="video.mp4" type="video/mp4">
             </video>
             <div class="hero-content reveal">
-                <h1 class="hero-title">MacBook Pro. Poder que intimida.</h1>
-                <p class="hero-subtitle">Com os chips M3, M3 Pro ou M3 Max, o MacBook Pro é feito para ultrapassar todos os limites.</p>
+                <h1 class="hero-title">Simplesmente incrível.</h1>
+                <p class="hero-subtitle">Com o sistema de câmera dupla mais avançado, chip A15 Bionic ultrarrápido e uma bateria que dura o dia todo.</p>
                 <a href="#cta-final" class="btn">Comprar Agora</a>
             </div>
         </section>
@@ -344,56 +335,46 @@
         <section class="features">
             <div class="feature-grid">
                 <div class="feature-item reveal">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
-                    <h3>Chips M3, M3 Pro ou M3 Max</h3>
-                    <p>Os chips mais avançados já criados para um computador pessoal, oferecendo desempenho e eficiência fenomenais.</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.776 48.776 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></svg>
+                    <h3>Sistema de Câmera Dupla</h3>
+                    <p>Um grande salto para fotos e vídeos com pouca luz. O Modo Cinema agora em 4K Dolby Vision, e o Modo Ação para vídeos mais estáveis.</p>
                 </div>
                 <div class="feature-item reveal" style="transition-delay: 0.1s;">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-1.621-1.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h13.5A2.25 2.25 0 0121 5.25z" /></svg>
-                    <h3>Até 22 horas de bateria</h3>
-                    <p>A incrível eficiência do chip da Apple permite que você trabalhe o dia todo sem precisar recarregar.</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                    <h3>Chip A15 Bionic</h3>
+                    <p>O mesmo chip super-rápido do iPhone 13 Pro. A GPU de 5 núcleos garante gráficos fluidos para os apps e jogos mais recentes.</p>
                 </div>
                 <div class="feature-item reveal" style="transition-delay: 0.2s;">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.572L16.5 21.75l-.398-1.178a3.375 3.375 0 00-2.3-2.3L12.75 18l1.178-.398a3.375 3.375 0 002.3-2.3L16.5 14.25l.398 1.178a3.375 3.375 0 002.3 2.3l1.178.398-1.178.398a3.375 3.375 0 00-2.3 2.3z" /></svg>
-                    <h3>A melhor tela em um notebook</h3>
-                    <p>A tela Liquid Retina XDR oferece brilho e contraste espetaculares, e a tecnologia ProMotion torna tudo mais fluido.</p>
+                    <h3>Tela Super Retina XDR</h3>
+                    <p>A tela OLED oferece um contraste incrível para brancos brilhantes e pretos profundos. A alta resolução e precisão de cores fazem tudo parecer nítido e real.</p>
                 </div>
             </div>
         </section>
 
         <section class="chips">
-            <h2 class="section-title reveal">Escolha seu chip. E decole.</h2>
+            <h2 class="section-title reveal">Escolha sua cor preferida.</h2>
             <div class="chip-scroller-wrapper">
                 <div class="chip-scroller">
                     <article class="chip-card reveal">
-                        <img src="https://www.apple.com/v/macbook-pro/an/images/overview/performance/icon_m3__3he4e9l4jciq_large.png" alt="Chip M3 Icon">
-                        <h3>M3</h3>
-                        <p>Velocidade e potência para as tarefas do dia a dia. Edite fotos, jogue e faça tudo voar.</p>
-                        <ul>
-                            <li>CPU de 8 núcleos</li>
-                            <li>GPU de 10 núcleos</li>
-                            <li>Até 24 GB de memória unificada</li>
-                        </ul>
+                        <img src="imagem02.png" alt="iPhone 14 na cor roxa">
+                        <h3>Branco</h3>
+                        <p>Um tom elegante e moderno que se destaca na multidão com sofisticação e estilo.</p>
                     </article>
                     <article class="chip-card reveal" style="transition-delay: 0.1s;">
-                        <img src="https://www.apple.com/v/macbook-pro/an/images/overview/performance/icon_m3_pro__c2coq2n7666u_large.png" alt="Chip M3 Pro Icon">
-                        <h3>M3 Pro</h3>
-                        <p>Desempenho para fluxos de trabalho mais exigentes, como programação, edição de vídeo e 3D.</p>
-                        <ul>
-                            <li>CPU de até 12 núcleos</li>
-                            <li>GPU de até 18 núcleos</li>
-                            <li>Até 36 GB de memória unificada</li>
-                        </ul>
+                        <img src="imagem03.png">
+                        <h3>Preto</h3>
+                        <p>Uma cor vibrante e serena, perfeita para quem busca um visual clássico com um toque de personalidade.</p>
                     </article>
                     <article class="chip-card reveal" style="transition-delay: 0.2s;">
-                        <img src="https://www.apple.com/v/macbook-pro/an/images/overview/performance/icon_m3_max__coj6222b4ci2_large.png" alt="Chip M3 Max Icon">
-                        <h3>M3 Max</h3>
-                        <p>Potência extrema para as tarefas mais complexas, como renderização 3D avançada e machine learning.</p>
-                        <ul>
-                            <li>CPU de até 16 núcleos</li>
-                            <li>GPU de até 40 núcleos</li>
-                            <li>Até 128 GB de memória unificada</li>
-                        </ul>
+                        <img src="imagem04.png" alt="iPhone 14 na cor meia-noite">
+                        <h3>Azul</h3>
+                        <p>Profundo, intenso e atemporal. Uma escolha poderosa que combina com tudo e nunca sai de moda.</p>
+                    </article>
+                    <article class="chip-card reveal" style="transition-delay: 0.3s;">
+                        <img src="imagem05.png" alt="iPhone 14 na cor estelar">
+                        <h3>Roxo</h3>
+                        <p>Um branco-creme luminoso e versátil que reflete a luz com um brilho sutil e refinado.</p>
                     </article>
                 </div>
             </div>
@@ -403,11 +384,11 @@
             <h2 class="section-title reveal">Olhe mais de perto.</h2>
             <div class="specs-grid reveal">
                 <div class="specs-text">
-                    <h3>Tela. Linda de se ver. Brilhante de se usar.</h3>
-                    <p>A tela Liquid Retina XDR apresenta Alcance Dinâmico Extremo, mais de 1000 nits de brilho para conteúdo HDR e modos de referência profissionais. A tecnologia ProMotion se adapta ao movimento do conteúdo com taxas de atualização de até 120 Hz.</p>
+                    <h3>Tela. Brilhante em tudo o que faz.</h3>
+                    <p>A tela Super Retina XDR é supernítida e colorida. A tecnologia OLED garante um contraste espetacular, e o Ceramic Shield na frente é mais resistente que qualquer vidro de smartphone.</p>
                 </div>
                 <div class="specs-image">
-                    <img src="https://www.apple.com/br/macbook-pro/images/overview/display/display_hero__ddv1b44zjc2m_large.jpg" alt="Tela Liquid Retina XDR do MacBook Pro">
+                    <img src="imagem07.webp" alt="Tela Super Retina XDR do iPhone 14">
                 </div>
             </div>
         </section>
@@ -415,11 +396,11 @@
         <section class="specs">
             <div class="specs-grid reversed reveal">
                 <div class="specs-text">
-                    <h3>Câmera, microfones e áudio. A sua melhor imagem e som.</h3>
-                    <p>Videochamadas nítidas com a câmera FaceTime HD de 1080p. Áudio cristalino com o conjunto de três microfones com qualidade de estúdio. E som espacial envolvente com o sistema de seis alto-falantes.</p>
+                    <h3>Câmera. Um grande salto para suas fotos.</h3>
+                    <p>A nova câmera grande-angular e o processamento de imagem aprimorado ajudam a capturar fotos ainda mais espetaculares em qualquer luz. Especialmente na penumbra. Grave vídeos cinematográficos com foco automático inteligente.</p>
                 </div>
                 <div class="specs-image">
-                    <img src="https://www.apple.com/br/macbook-pro/images/overview/audio/audio_hero__f2j3801v2j6u_large.jpg" alt="Pessoa em uma videochamada nítida no MacBook Pro">
+                    <img src="imagem.jpg.webp" alt="Mulher sorrindo em uma foto tirada com o iPhone 14">
                 </div>
             </div>
         </section>
@@ -427,26 +408,26 @@
         <section class="specs">
             <div class="specs-grid reveal">
                 <div class="specs-text">
-                    <h3>Conexões. Muitas portas para o que der e vier.</h3>
-                    <p>Transfira fotos e vídeos com o leitor de cartão SDXC. Conecte TVs ou monitores com a porta HDMI. Use acessórios e monitores adicionais com as três portas Thunderbolt 4. E carregue com a porta MagSafe 3, que se conecta e desconecta com facilidade.</p>
+                    <h3>Bateria para o dia todo. E 5G ultrarrápido.</h3>
+                    <p>Desfrute da melhor duração de bateria em um iPhone. Assista a vídeos, jogue e faça tudo o que ama por mais tempo. O 5G oferece downloads super-rápidos, streaming de alta qualidade e jogos sem atraso.</p>
                 </div>
                 <div class="specs-image">
-                    <img src="https://www.apple.com/br/macbook-pro/images/overview/connectivity/connectivity_hero__b5v64w72kqsi_large.jpg" alt="Visão detalhada das portas do MacBook Pro">
+                    <img src="imagem06.jpg" alt="Gráfico mostrando a longa duração da bateria do iPhone 14">
                 </div>
             </div>
         </section>
         
-        <section class="macos">
-            <img class="macos-bg" src="https://www.apple.com/br/macos/sonoma/images/overview/hero/macos_sonoma_hero__g527e504y3ia_large.jpg" alt="Interface do macOS Sonoma">
-            <div class="macos-content reveal">
-                <h2>macOS e apps. Tudo o que você faz, mais poderoso.</h2>
-                <p>O macOS foi criado para aproveitar todo o poder do chip da Apple. Com atualizações que trazem novos recursos para você trabalhar e se divertir em outro nível.</p>
+        <section class="ios">
+            <img class="ios-bg" src="imagem01.webp" alt="Interface do iOS">
+            <div class="ios-content reveal">
+                <h2>iOS. Feito para ser seu.</h2>
+                <p>O iOS é o sistema operacional móvel mais pessoal e seguro do mundo, com recursos poderosos e projetado para proteger sua privacidade.</p>
             </div>
         </section>
 
         <section class="cta" id="cta-final">
-            <h2 class="section-title reveal">Pronto para o próximo nível?</h2>
-            <p class="section-subtitle reveal">O MacBook Pro Gold Edition redefine o que um notebook profissional pode fazer. Adquira o seu.</p>
+            <h2 class="section-title reveal">Garanta já o seu iPhone 14.</h2>
+            <p class="section-subtitle reveal">Novo, lacrado, com 128GB de espaço e garantia oficial Apple. A melhor escolha para quem busca performance e estilo.</p>
             <a href="#" class="btn reveal" data-open-checkout>Comprar Agora</a>
         </section>
     </main>
@@ -454,14 +435,14 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-top">
-                <p>Imagens meramente ilustrativas. As especificações podem variar. Este é um site de demonstração inspirado no design da Apple Inc.</p>
+                <p> Produto original, novo, lacrado na caixa, com 1 ano de garantia Apple. Este é um site de demonstração.</p>
             </div>
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Comprar e Aprender</h4>
                     <ul>
                         <li><a href="#">Loja</a></li>
-                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">iPhone</a></li>
                         <li><a href="#">Acessórios</a></li>
                     </ul>
                 </div>
@@ -473,7 +454,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Valores da Apple</h4>
+                    <h4>Valores</h4>
                     <ul>
                         <li><a href="#">Acessibilidade</a></li>
                         <li><a href="#">Meio ambiente</a></li>
@@ -481,7 +462,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Sobre a Sua Marca</h4>
+                    <h4>Sobre Sua Loja</h4>
                     <ul>
                         <li><a href="#">Notícias</a></li>
                         <li><a href="#">Carreiras</a></li>
@@ -490,7 +471,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© <span id="year"></span> Sua Marca Inc. Todos os direitos reservados.</p>
+                <p>© <span id="year"></span> Pause. Todos os direitos reservados.</p>
                 <p>Brasil</p>
             </div>
         </div>
@@ -517,22 +498,21 @@
         });
 
         // LÓGICA DE CHECKOUT IMEDIATO E CONFIÁVEL
-        const CHECKOUT_LINK = 'https://mpago.la/2RQR7pY';
+        const CHECKOUT_LINK = 'https://s.shopee.com.br/709x1fSLSK'; // <<< SUBSTITUA PELO SEU LINK DE PAGAMENTO
         const checkoutButtons = document.querySelectorAll('[data-open-checkout]');
         checkoutButtons.forEach(button => {
             button.addEventListener('click', (event) => {
-                event.preventDefault(); // Previne comportamento padrão do link, se houver
+                event.preventDefault();
                 window.open(CHECKOUT_LINK, '_blank');
             });
         });
         
         // Aviso no console se o link não foi alterado
         window.addEventListener('load', () => {
-            if (!CHECKOUT_LINK || CHECKOUT_LINK.includes('https://mpago.la/2RQR7pY')) {
-                console.warn('⚠ ATENÇÃO: O link do checkout é um exemplo. Substitua a constante CHECKOUT_LINK no script pelo seu link de pagamento do Mercado Pago.');
+            if (!CHECKOUT_LINK || CHECKOUT_LINK.includes('https://s.shopee.com.br/709x1fSLSK')) {
+                console.warn('⚠ ATENÇÃO: O link do checkout é um exemplo. Substitua a constante CHECKOUT_LINK no script pelo seu link de pagamento.');
             }
         });
     </script>
 </body>
 </html>
-
