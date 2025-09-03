@@ -4,15 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>iPhone 14 128GB - Novo, Lacrado com Garantia</title>
-    <meta name="description" content="Compre o iPhone 14 128GB novo, lacrado e com garantia Apple de 1 ano. Câmera incrível, chip A15 Bionic e a melhor tela. Aproveite agora!" />
     <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="Compre o iPhone 14 128GB novo, lacrado e com garantia Apple de 1 ano. Câmera incrível, chip A15 Bionic e a melhor tela. Aproveite agora!" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ================================================
-           1. RESET E VARIÁVEIS GLOBAIS
-           ================================================ */
+            1. RESET E VARIÁVEIS GLOBAIS
+            ================================================ */
         :root {
             --c-bg: #000000;
             --c-bg-panel: #111112;
@@ -38,8 +38,8 @@
         img, video { display: block; max-width: 100%; height: auto; }
 
         /* ================================================
-           2. NAVEGAÇÃO E ELEMENTOS DE UI
-           ================================================ */
+            2. NAVEGAÇÃO E ELEMENTOS DE UI
+            ================================================ */
         .nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             height: var(--nav-h);
@@ -71,7 +71,7 @@
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 800; letter-spacing: -0.04em;
             text-align: center; max-width: 800px;
-            margin: 0 auto 50px auto; /* Reduzido de 60px */
+            margin: 0 auto 60px auto;
             text-wrap: balance;
         }
         .section-subtitle {
@@ -80,13 +80,13 @@
             color: var(--c-fg-subtle);
             text-align: center;
             max-width: 700px;
-            margin: -30px auto 50px auto; /* Reduzido de -40px e 60px */
+            margin: -40px auto 60px auto;
             text-wrap: balance;
         }
 
         /* ================================================
-           3. SEÇÃO HERO
-           ================================================ */
+            3. SEÇÃO HERO
+            ================================================ */
         .hero {
             height: 100svh;
             position: relative;
@@ -129,9 +129,9 @@
         }
         
         /* ================================================
-           4. SEÇÃO DESTAQUES (Feature Grid)
-           ================================================ */
-        .features { padding: 90px 24px; background: var(--c-bg-panel); } /* Reduzido de 120px */
+            4. SEÇÃO DESTAQUES (Feature Grid)
+            ================================================ */
+        .features { padding: 120px 24px; background: var(--c-bg-panel); }
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -145,9 +145,9 @@
         .feature-item p { font-size: 1rem; color: var(--c-fg-subtle); line-height: 1.6; }
 
         /* ================================================
-           5. SEÇÃO CORES (Adaptado da Seção "Chips")
-           ================================================ */
-        .chips { padding: 90px 0; overflow-x: hidden; } /* Reduzido de 120px */
+            5. SEÇÃO CORES (Adaptado da Seção "Chips")
+            ================================================ */
+        .chips { padding: 120px 0; overflow-x: hidden; }
         .chip-scroller-wrapper {
             max-width: var(--maxw);
             margin: 0 auto;
@@ -198,11 +198,11 @@
         .chip-card p { color: var(--c-fg-subtle); margin-bottom: 24px; font-size: 1rem; line-height: 1.6; }
 
         /* ================================================
-           6. SEÇÕES DE DETALHES (Texto e Imagem)
-           ================================================ */
-        .specs { padding: 50px 24px; } /* Reduzido de 60px */
+            6. SEÇÕES DE DETALHES (Texto e Imagem)
+            ================================================ */
+        .specs { padding: 60px 24px; }
         .specs-grid {
-            max-width: var(--maxw); margin: 60px auto; /* Reduzido de 80px */
+            max-width: var(--maxw); margin: 80px auto;
             display: grid; grid-template-columns: 1fr; gap: 40px;
             align-items: center;
         }
@@ -238,10 +238,10 @@
         }
         
         /* ================================================
-           7. SEÇÃO IOS (Adaptado da Seção macOS)
-           ================================================ */
+            7. SEÇÃO IOS (Adaptado da Seção macOS)
+            ================================================ */
         .ios {
-            padding: 90px 24px; /* Reduzido de 120px */
+            padding: 120px 24px;
             position: relative;
             min-height: 80svh;
             display: grid;
@@ -270,9 +270,9 @@
         }
 
         /* ================================================
-           8. SEÇÃO CTA E FOOTER
-           ================================================ */
-        .cta { padding: 90px 24px; text-align: center; } /* Reduzido de 120px */
+            8. SEÇÃO CTA E FOOTER
+            ================================================ */
+        .cta { padding: 120px 24px; text-align: center; }
         footer {
             background: var(--c-bg-panel);
             padding: 60px 24px 40px;
@@ -302,20 +302,8 @@
         }
 
         /* ================================================
-           9. AJUSTES PARA DISPOSITIVOS MÓVEIS
-           ================================================ */
-        @media (max-width: 768px) {
-            .section-title { margin-bottom: 40px; }
-            .section-subtitle { margin: -20px auto 40px auto; }
-            .features, .ios, .cta { padding: 60px 24px; }
-            .chips { padding: 60px 0; }
-            .specs { padding: 40px 24px; }
-            .specs-grid { margin: 40px auto; }
-        }
-
-        /* ================================================
-           10. ANIMAÇÕES DE REVELAÇÃO
-           ================================================ */
+            9. ANIMAÇÕES DE REVELAÇÃO
+            ================================================ */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -529,5 +517,3 @@
     </script>
 </body>
 </html>
-
-
