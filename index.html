@@ -19,8 +19,8 @@
             --c-fg: #f5f5f7;
             --c-fg-subtle: #a1a1a6;
             --c-border: rgba(255, 255, 255, 0.1);
-            --c-gold: #0071e3; /* Alterado para o azul da Apple para combinar com o iPhone */
-            --c-gold-light: #2997ff;
+            --c-theme: #0071e3;
+            --c-theme-light: #2997ff;
             --maxw: 1024px;
             --radius: 28px;
             --nav-h: 56px;
@@ -55,7 +55,7 @@
         .nav .brand { font-weight: 600; font-size: 17px; }
         .btn {
             appearance: none; border: none; cursor: pointer;
-            background: var(--c-gold); color: #fff;
+            background: var(--c-theme); color: #fff;
             padding: 10px 20px; border-radius: 999px;
             font-size: 15px; font-weight: 600; text-decoration: none;
             display: inline-block;
@@ -65,7 +65,7 @@
         .btn:hover {
             transform: scale(1.05) translateY(-1px);
             box-shadow: 0 8px 25px rgba(0, 113, 227, 0.3);
-            background: var(--c-gold-light);
+            background: var(--c-theme-light);
         }
         .section-title {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
@@ -84,6 +84,37 @@
             text-wrap: balance;
         }
 
+        /* Controles de Vídeo (Botão de Som) */
+        .video-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+        .video-controls button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .video-controls button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .video-controls button svg {
+            width: 24px;
+            height: 24px;
+            color: #fff;
+        }
+
         /* ================================================
             3. SEÇÃO HERO
             ================================================ */
@@ -95,6 +126,7 @@
             justify-content: center;
             text-align: center;
             padding: 0 24px;
+            overflow: hidden;
         }
         .hero .hero-video-bg {
             position: absolute; top: 50%; left: 50%;
@@ -140,19 +172,19 @@
             margin: 0 auto;
         }
         .feature-item { text-align: left; }
-        .feature-item svg { width: 48px; height: 48px; margin-bottom: 16px; color: var(--c-gold); }
+        .feature-item svg { width: 48px; height: 48px; margin-bottom: 16px; color: var(--c-theme); }
         .feature-item h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; }
         .feature-item p { font-size: 1rem; color: var(--c-fg-subtle); line-height: 1.6; }
 
         /* ================================================
-            5. SEÇÃO CORES (Adaptado da Seção "Chips")
+            5. SEÇÃO CORES
             ================================================ */
-        .chips { padding: 120px 0; overflow-x: hidden; }
-        .chip-scroller-wrapper {
+        .colors { padding: 120px 0; overflow-x: hidden; }
+        .color-scroller-wrapper {
             max-width: var(--maxw);
             margin: 0 auto;
         }
-        .chip-scroller {
+        .color-scroller {
             display: flex;
             justify-content: flex-start;
             gap: 30px;
@@ -162,40 +194,40 @@
             -webkit-overflow-scrolling: touch;
         }
         @media (min-width: 1020px) {
-            .chip-scroller {
-                flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha */
+            .color-scroller {
+                flex-wrap: wrap;
                 justify-content: center;
-                gap: 40px; /* Aumenta o espaçamento geral */
+                gap: 40px;
                 overflow-x: hidden;
             }
         }
-        .chip-scroller::-webkit-scrollbar { height: 8px; }
-        .chip-scroller::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
-        .chip-scroller::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-        .chip-scroller::-webkit-scrollbar-thumb:hover { background: #666; }
+        .color-scroller::-webkit-scrollbar { height: 8px; }
+        .color-scroller::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+        .color-scroller::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        .color-scroller::-webkit-scrollbar-thumb:hover { background: #666; }
 
-        .chip-card {
-            flex: 0 0 clamp(300px, 80vw, 380px); /* Card maior */
+        .color-card {
+            flex: 0 0 clamp(300px, 80vw, 380px);
             scroll-snap-align: center;
             background: var(--c-bg-panel);
             border-radius: var(--radius);
-            padding: 40px 32px; /* Aumenta o espaçamento interno */
+            padding: 40px 32px;
             border: 1px solid var(--c-border);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .chip-card:hover {
+        .color-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .chip-card img { 
-            width: 500px; /* Imagem mais larga */
-            height: 280px; /* Imagem mais alta */
+        .color-card img { 
+            width: 100%;
+            height: 280px;
             object-fit: contain; 
             margin: 0 auto 24px auto; 
         }
-        .chip-card h3 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; }
-        .chip-card p { color: var(--c-fg-subtle); margin-bottom: 24px; font-size: 1rem; line-height: 1.6; }
+        .color-card h3 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; }
+        .color-card p { color: var(--c-fg-subtle); margin-bottom: 24px; font-size: 1rem; line-height: 1.6; }
 
         /* ================================================
             6. SEÇÕES DE DETALHES (Texto e Imagem)
@@ -238,7 +270,7 @@
         }
         
         /* ================================================
-            7. SEÇÃO IOS (Adaptado da Seção macOS)
+            7. SEÇÃO IOS
             ================================================ */
         .ios {
             padding: 120px 24px;
@@ -273,7 +305,7 @@
             8. SEÇÃO CTA E FOOTER
             ================================================ */
         .cta { padding: 120px 24px; text-align: center; }
-        footer {
+        .footer {
             background: var(--c-bg-panel);
             padding: 60px 24px 40px;
             color: var(--c-fg-subtle);
@@ -310,6 +342,40 @@
             transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* ================================================
+          10. ESTILOS RESPONSIVOS (MOBILE) - AJUSTES COMPACTOS
+          ================================================ */
+        @media (max-width: 768px) {
+            .features,
+            .colors,
+            .ios,
+            .cta {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+            .specs {
+                padding-top: 25px;
+                padding-bottom: 25px;
+            }
+            .section-title {
+                margin-bottom: 30px;
+                font-size: clamp(2rem, 7vw, 3.5rem);
+            }
+            .section-subtitle {
+                margin-top: -20px;
+                margin-bottom: 30px;
+                font-size: clamp(1rem, 3.5vw, 1.5rem);
+            }
+            .specs-grid {
+                margin-top: 30px;
+                margin-bottom: 30px;
+                gap: 30px;
+            }
+            .color-card {
+                 flex: 0 0 clamp(280px, 85vw, 340px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -323,13 +389,23 @@
 
     <main>
         <section class="hero">
-            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://www.apple.com/v/iphone-14/k/images/overview/hero/hero_iphone_14__esmpdxj3qd4y_large.jpg">
+            <video id="heroVideo" class="hero-video-bg" autoplay loop muted playsinline poster="https://www.apple.com/v/iphone-14/k/images/overview/hero/hero_iphone_14__esmpdxj3qd4y_large.jpg">
                 <source src="video.mp4" type="video/mp4">
             </video>
             <div class="hero-content reveal">
                 <h1 class="hero-title">Simplesmente incrível.</h1>
                 <p class="hero-subtitle">Com o sistema de câmera dupla mais avançado, chip A15 Bionic ultrarrápido e uma bateria que dura o dia todo.</p>
                 <a href="#cta-final" class="btn">Comprar Agora</a>
+            </div>
+            <div class="video-controls">
+                <button id="muteToggle">
+                    <svg id="volumeOnIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="display:none;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a11.955 11.955 0 010 12.728M17.25 8.757a6.798 6.798 0 010 6.486M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.147-1.636.422-2.396C2.906 8.757 3.63 8.25 4.51 8.25H15.75z" />
+                    </svg>
+                    <svg id="volumeOffIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.147-1.636.422-2.396C2.906 8.757 3.63 8.25 4.51 8.25H15.75z" />
+                    </svg>
+                </button>
             </div>
         </section>
 
@@ -353,27 +429,27 @@
             </div>
         </section>
 
-        <section class="chips">
+        <section class="colors">
             <h2 class="section-title reveal">Escolha sua cor preferida.</h2>
-            <div class="chip-scroller-wrapper">
-                <div class="chip-scroller">
-                    <article class="chip-card reveal">
-                        <img src="imagem02.png" alt="iPhone 14 na cor roxa">
+            <div class="color-scroller-wrapper">
+                <div class="color-scroller">
+                    <article class="color-card reveal">
+                        <img src="imagem02.png" alt="iPhone 14 na cor branca">
                         <h3>Branco</h3>
                         <p>Um tom elegante e moderno que se destaca na multidão com sofisticação e estilo.</p>
                     </article>
-                    <article class="chip-card reveal" style="transition-delay: 0.1s;">
-                        <img src="imagem03.png">
+                    <article class="color-card reveal" style="transition-delay: 0.1s;">
+                        <img src="imagem03.png" alt="iPhone 14 na cor preta">
                         <h3>Preto</h3>
                         <p>Uma cor vibrante e serena, perfeita para quem busca um visual clássico com um toque de personalidade.</p>
                     </article>
-                    <article class="chip-card reveal" style="transition-delay: 0.2s;">
-                        <img src="imagem04.png" alt="iPhone 14 na cor meia-noite">
+                    <article class="color-card reveal" style="transition-delay: 0.2s;">
+                        <img src="imagem04.png" alt="iPhone 14 na cor azul">
                         <h3>Azul</h3>
                         <p>Profundo, intenso e atemporal. Uma escolha poderosa que combina com tudo e nunca sai de moda.</p>
                     </article>
-                    <article class="chip-card reveal" style="transition-delay: 0.3s;">
-                        <img src="imagem05.png" alt="iPhone 14 na cor estelar">
+                    <article class="color-card reveal" style="transition-delay: 0.3s;">
+                        <img src="imagem05.png" alt="iPhone 14 na cor roxa">
                         <h3>Roxo</h3>
                         <p>Um branco-creme luminoso e versátil que reflete a luz com um brilho sutil e refinado.</p>
                     </article>
@@ -491,15 +567,14 @@
                 }
             });
         }, {
-            threshold: 0.1 // Anima quando 10% do elemento estiver visível
+            threshold: 0.1
         });
-
         revealElements.forEach(element => {
             observer.observe(element);
         });
 
-        // LÓGICA DE CHECKOUT IMEDIATO E CONFIÁVEL
-        const CHECKOUT_LINK = 'https://s.shopee.com.br/709x1fSLSK'; // <<< SUBSTITUA PELO SEU LINK DE PAGAMENTO
+        // LÓGICA DE CHECKOUT
+        const CHECKOUT_LINK = 'https://s.shopee.com.br/709x1fSLSK'; // <<< SUBSTITUA PELO SEU LINK
         const checkoutButtons = document.querySelectorAll('[data-open-checkout]');
         checkoutButtons.forEach(button => {
             button.addEventListener('click', (event) => {
@@ -508,12 +583,25 @@
             });
         });
         
-        // Aviso no console se o link não foi alterado
+        // Aviso no console
         window.addEventListener('load', () => {
-            if (!CHECKOUT_LINK || CHECKOUT_LINK.includes('https://s.shopee.com.br/709x1fSLSK')) {
-                console.warn('⚠ ATENÇÃO: O link do checkout é um exemplo. Substitua a constante CHECKOUT_LINK no script pelo seu link de pagamento.');
+            if (!CHECKOUT_LINK || CHECKOUT_LINK.includes('SEU-LINK')) {
+                console.warn('⚠ ATENÇÃO: O link do checkout é um exemplo. Substitua a constante CHECKOUT_LINK no script.');
             }
         });
+
+        // LÓGICA DO BOTÃO DE ÁUDIO DO VÍDEO
+        const heroVideo = document.getElementById('heroVideo');
+        const muteToggle = document.getElementById('muteToggle');
+        const volumeOnIcon = document.getElementById('volumeOnIcon');
+        const volumeOffIcon = document.getElementById('volumeOffIcon');
+
+        muteToggle.addEventListener('click', () => {
+            heroVideo.muted = !heroVideo.muted;
+            volumeOnIcon.style.display = heroVideo.muted ? 'none' : 'block';
+            volumeOffIcon.style.display = heroVideo.muted ? 'block' : 'none';
+        });
+
     </script>
 </body>
 </html>
